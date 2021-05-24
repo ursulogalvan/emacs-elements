@@ -1,0 +1,15 @@
+#+title: Introduction Video to Emacs-Elements
+#+ROAM_TAGS: aboutme
+
+Credibility Trigger
+Rev. DR 
+Expert in Classical langauges - 
+PHD
+Also ordained Presbyterian Minister
+Got into Emacs trying to find a better solution for typing documents in Ancient Greek and Hebrew
+Using Emacs for 6 years
+Critical reviews of Emacs Manual and ORG Manual
+Want to tell people how to DO things in Emacs
+Doing Emacs for work
+
+https://youtu.be/sTky0J_74wc

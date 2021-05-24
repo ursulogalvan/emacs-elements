@@ -1,0 +1,63 @@
+#+title: install-emacs-source-linux
+#+ROAM_TAGS: Emacs install git developmental
+#+created: [2021-02-10 Wed]
+#+last_modified: [2021-02-10 Wed 06:34]
+
+Many ways to skin a cat
+
+Instructions for Windows users can be found here:
+
+https://github.com/revrari/install-emacs-windows
+
+Linux: snap package
+sudo snap install emacs --classic
+OR,
+Default with your version -- always a bit behind
+
+Better way: install from source
+
+sudo apt-get install build-essential
+
+The build-essential package is a reference for all the packages needed to compile Emacs
+
+git clone https://github.com/mirrors/emacs.git (developmental)
+
+or,
+https://ftp.gnu.org/gnu/emacs/
+wget https://ftp.gnu.org/gnu/emacs/emacs-27.1.tar.gz
+tar xvzf
+
+Process:
+
+INSTALL file
+
+./autogen.sh
+
+This script generates the configure script and any files it needs
+
+./configure --with-mailutils
+
+./configure --help
+
+make
+
+make install OR Sudo make install
+
+# prepend emacs path to environment variable PATH
+~./bashrc
+PATH=$HOME/emacs/src:$PATH
+
+export EDITOR=emacs
+Emacs will now start from anywhere in command line
+
+Create a shortcut for Emacs in your Distro
+Create a new launcher here
+Check Emacs version
+
+If you installed developmental version, you will need to update this from time to time
+
+cd ~/emacs
+
+git reset --hard
+git clean -xdf
+git pull https://github.com/mirrors/emacs.git

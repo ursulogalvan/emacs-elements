@@ -1,0 +1,135 @@
+#+title: How to install the latest developmental version of Emacs on Windows 10 -- for Dummies
+Last update: <2019-12-09 Mon 09:15>
+#+ROAM_TAGS: Emacs install git
+#+STARTUP: showall
+
+* Nota Bene
+
+Please note that the steps below will work for any version of Emacs you wish to install, whether it be the stable release or the developmental version. One must tweak accordingly.
+
+There are several ways to install Emacs on Windows. My method uses msys2 because in my experience this offers overall the best experience. (I am open to alternate points of view.)
+
+* Install msys2
+
+- Download and install https://www.msys2.org/
+- Update with *pacman -Syu*
+- Then with *pacman -Su*
+
+* Tweak Windows Variables
+
+- Add
+
+  c:\msys64\usr\bin
+
+  c:\msys64\mingw64\bin
+
+  to Windows PATH environment variable. This also ensures find.exe will work
+
+- Create HOME variable in Windows Environmental Variables
+
+[[./home.png][Click here to see how]]
+
+* Install packages in msys2
+
+- Install these packages (required)
+
+pacman -S base-devel mingw-w64-x86_64-toolchain
+
+- Optional packages
+
+pacman -S mingw-w64-x86_64-xpm-nox mingw-w64-x86_64-libtiff mingw-w64-x86_64-giflib mingw-w64-x86_64-libpng mingw-w64-x86_64-libjpeg-turbo mingw-w64-x86_64-librsvg mingw-w64-x86_64-libxml2 mingw-w64-x86_64-imagemagick mingw-w64-x86_64-gnutls
+
+[[https://sourceforge.net/p/emacsbinw64/wiki/Build%20guideline%20for%20MSYS2-MinGW-w64%20system/][For details see this page]]
+
+* Install git
+
+pacman -S git
+
+* Install ghostview to get doc-to-pdf to work
+
+pacman -S mingw-w64-x86_64-ghostscript
+
+* Install the hack font (optional)
+
+https://github.com/source-foundry/Hack-windows-installer/releases/tag/v1.6.0
+
+* Install aspell or hunspell
+
+pacman -S mingw-w64-x86_64-aspell mingw-w64-x86_64-aspell-en (my choice)
+
+OR
+
+pacman -S mingw-w64-x86_64-hunspell mingw-w64-x86_64-hunspell-en
+
+Go here for a hunspell binary:
+
+https://sourceforge.net/projects/ezwinports/files/hunspell-1.3.2-3-w32-bin.zip/download
+
+* Install zip (so as to be able to export org mode files)
+
+pacman -S zip
+
+* Install gunzip and gzip
+
+To get Emacs to compress or uncompress files one will need gunzip.exe and gzip.exe. These programs will need to be in your PATH. (Note that these must be .exe programs not Unix shell scripts.)
+
+http://gnuwin32.sourceforge.net/packages/gzip.htm
+
+http://www2.cs.uidaho.edu/~jeffery/win32/
+
+* Clone the Emacs git repository
+
+git clone https://github.com/mirrors/emacs.git
+
+cd ~/emacs
+
+* Compile Emacs
+
+*./autogen.sh*
+
+*./configure*
+
+*make*
+
+*make install*
+
+Type "emacs" at the command line run emacs.
+
+* Alternative install method
+
+If you do not want to compile Emacs you can download an executable from:
+
+https://alpha.gnu.org/gnu/emacs/pretest/windows/emacs-27/
+
+* Some Useful Commands
+
+SHIFT-INSERT -- inserts text copied to the clipboard into msys
+
+pacman -Ss hunspell -- searches for program "hunspell"
+
+pacman - S -- install program
+
+pacman - R -- remove program
+
+* Creating Shortcuts
+
+- Go to C:\msys64\mingw64\bin and create a shortcut on your desktop of runemacs.exe
+- If you wish to use Emacsclient make a shortcut of emacsclient.exe. Right click and change the target properties to:
+
+C:\msys64\mingw64\bin\emacsclientw.exe -a="" -c
+
+* Creating Symbolic Links
+
+In order to create symlinks in Windows as one does in Linux all one needs to do is to *give permission to the Windows user* to create symbolic links OR run Emacs as Administrator.
+
+One can follow the steps here to assign user permissions:
+
+https://superuser.com/questions/104845/permission-to-make-symbolic-links-in-windows-7
+
+To see a fuller discussion on the topic:
+
+https://www.reddit.com/r/emacs/comments/e7c01b/alternatives_to_symlinks_in_emacs/
+
+Thereafter one would type M-x make-symbolic-link to create a symlink.
+
+[[file:20201231133401-emacs_manual.org][GNU Emacs Manual 18th edition (FSF): Brief Review]]

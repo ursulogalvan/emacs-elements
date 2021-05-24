@@ -1,0 +1,49 @@
+#+title: More org-roam tweaks
+#+roam_alias: "emacs channel" "emacs-elements"
+#+created: [2021-02-11 Thu]
+#+last_modified: [2021-02-11 Thu 09:30]
+#+ROAM_TAGS: org-roam
+[[file:~/computing][file:~/computing]]
+
+*open-recent-files*
+
+(winner-mode +1)
+(define-key winner-mode-map (kbd "<M-left>") #'winner-undo)
+(define-key winner-mode-map (kbd "<M-right>") #'winner-redo)
+
+*DEFT: find files by content*
+
+(require 'deft)
+(setq deft-directory "~/org-roam"
+      deft-extensions '("md" "org"))
+(setq deft-recursive t)
+(setq deft-use-filename-as-title nil)
+(setq deft-use-filter-string-for-filename t)
+(setq deft-file-naming-rules '((nospace . "-")))
+
+*ORG_DOWNLOAD*
+
+Insert pictures into org-roam files
+
+(require 'org-download)
+;; Drag-and-drop to `dired`
+(add-hook 'dired-mode-hook 'org-download-enable)
+(setq org-download-image-dir "~/Pictures")
+(setq org-download-heading-lvl nil)
+(setq rg-download-timestamp "%Y%m%d-%H%M%S_")
+(setq rg-image-actual-width 300)
+
+*alternative titles* org
+#+roam_alias:
+
+e.g. Lent 1
+First Sunday in Lent
+
+org-roam-title-sources
+
+*org-roam keys*
+
+roam_key:
+
++title: Google
++roam_key: https://www.google.com/

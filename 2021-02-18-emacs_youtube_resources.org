@@ -1,0 +1,50 @@
+#+title: emacs-youtube-resources
+#+ROAM_TAGS: youtube emacs channels top
+#+created: [2021-02-18 Thu]
+#+last_modified: [2021-02-18 Thu 12:02]
+
+*Jeckor*
+
+https://www.youtube.com/user/jekor
+
+*Sacha Chua*
+
+https://www.youtube.com/user/sachactube
+
+**Emacs basics**
+
+https://www.youtube.com/watch?v=zY0HENH4F4U&list=PL4th0AZixyRF3SEaolBXjE-RuMVmjJfHx&ab_channel=SachaChua
+
+**use-package**
+
+https://www.youtube.com/watch?v=2TSKxxYEbII&ab_channel=SachaChua
+
+*Ed Walsh*
+
+https://www.youtube.com/user/edwalshjr
+
+*LA Rathbone - Slackware series*
+
+https://www.youtube.com/user/LARathbone
+
+*Protesilaos Stavrou*
+
+**Emacs: introduction to GNUS**
+
+https://www.youtube.com/watch?v=jwz7aYUWIbM
+
+**Emacs: basics of regular expressions (regexp)**
+
+https://www.youtube.com/watch?v=TxYGHjKBMUg
+
+*Rainer*
+
+https://www.youtube.com/user/koenighaunstetten
+
+**Liger-Learn**
+
+https://www.youtube.com/watch?v=hGSSB33BOU0&ab_channel=LigerLearn
+
+**Emacs Rocks**
+
+https://www.youtube.com/channel/UCkRmQ_G_NbdbCQMpALg6UPg

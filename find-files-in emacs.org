@@ -1,0 +1,76 @@
+#+title: find-files-in-emacs
+#+ROAM_TAGS: find name
+
+*Find-name-dired*
+
+This search is based on wildcards and not regular expressions, i.e. shell glob.
+
+I have bound this to:
+
+(global-set-key (kbd "C-c f") 'find-name-dired)
+
+*e.g. *john?smith*
+
+*call*Mary*
+
+*call*ary*
+
+? equals single character
+asterisk (*) equals character or no character
+
+*Find-dired*
+
+(Based on unix find-command)
+
+(global-set-key (kbd "C-c F") 'find-dired)
+
+New frame: C-x 5 2
+
+https://www.reddit.com/r/emacs/comments/agvaa4/a_better_way_to_find_files_by_name_in_emacs/
+
+eli-zaretskii (GNU Emacs maintainer) writes:
+
+"Doing separate searches doesn't sound such a bad solution to me. If you want to do it in a single search, then use the following command:
+
+M-x find-dired RET <directory> RET -name "*john*camp*" -o -name "*camp*john*" RET
+
+-name = find the file with this specific name
+
+This is not too complicated: -o is the OR operator, and you can use it several times.
+
+Another example of my own:
+
+e.g. -iname "*magi*" -not -iname "*magi[tc]*" -o -iname "*wise*men*"
+
+To customize the *format* of the listings customize the variable =find-ls-option=. See Emacs Manual p. 351
+
+e.g. find files by size
+
+-size +100M -exec ls -lh {} \;
+
+-size +2G -exec ls -lh {} \;
+
+My customizations to find:
+
+-iname "*avenant*philippa*" -o -iname "*philippa-avenant*" -exec ls -ldh {} ";"
+
+*find-lisp-find-dired* (regexp)
+
+Emulates a basic regexp find in elisp (very fast)
+
+you don't need to have installed an external find program
+
+#+begin_example
+  e.g. .\txt$ .*\.txt$
+  ^#
+  wieg.*
+  [Mm]ary (case-fold-search)
+#+end_example
+
+NB: Finding files is a mechanical and deliberate process. Don't expect it to be "automatic". It only becomes automatic once you have pressed the key. :)
+
+* locate
+
+* Find only directories
+
+find-lisp-find-dired-subdirectories

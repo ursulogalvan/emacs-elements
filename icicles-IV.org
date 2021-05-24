@@ -1,0 +1,50 @@
+#+Title: Icicles-IV - More advanced features and tips
+#+Roam_Tags: icicles tweaks features tips
+#+Created: [2021-02-19 Fri]
+#+Last_Modified: [2021-02-19 Fri 18:26]
+#+STARTUP: showall
+
+* icicle-find-file-expand-directory-flag
+
+* History
+
+Commands invoked using a menu-bar menu are included in the command history
+
+M-x
+M-n
+M-k delete item
+
+M-h history
+M-o <tab> -- lets you use completion to insert any number
+;;     of history elements in the minibuffer
+
+M-Pause restricts the current set of completion candidates to those that you have used previously. One must use tab 1st to establish an explicit candidate set.
+
+*toggle*
+M-x
+M-i C-h
+
+*case-sensitivity-toggle*
+
+`C-A' (that is, `C-S-a')
+
+*how to toggle prefix and apropos completion on the fly*
+M-x
+M-i <tab>
+
+Two more tips:
+
+*to be able to scroll the completions-buffer*
+C-v M-v
+
+*preview of images*
+#+begin_example
+C-x C-f ~/org-roam
+#+end_example
+
+[[file:../icicles-I.org][icicles I -- Installation and main idea]]
+[[file:../icicles-II.org][icicles II -- 5 killer icicles features]]
+[[file:../icicles-III.org][Icicles-III - Advanced tips, tweaks and features]]
+
+
+

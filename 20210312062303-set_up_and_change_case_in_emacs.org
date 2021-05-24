@@ -1,0 +1,48 @@
+#+title: How to set up and change case in Emacs
+#+created: [2021-03-12 Fri]
+#+last_modified: [2021-03-12 Fri 06:23]
+#+ROAM_TAGS: case
+Use Emacs -Q -- Start Emacs with minimum customizations.
+
+(global-set-key (kbd "C-q") 'kill-this-buffer)
+
+(defvar bootstrap-version) ;; straight
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+	(url-retrieve-synchronously
+ "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+	 'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+
+(straight-use-package 'lorem-ipsum)
+
+Aliquam erat volutpat.  Nunc eleifend leo vitae magna.  In id erat non orci commodo lobortis.  Proin neque massa, cursus ut, gravida ut, lobortis eget, lacus.  Sed diam.  Praesent fermentum tempor tellus.  Nullam tempus.  Mauris ac felis vel velit tristique imperdiet.  Donec at pede.  Etiam vel neque nec dui dignissim bibendum.  Vivamus id enim.  Phasellus neque orci, porta a, aliquet quis, semper a, massa.  Phasellus purus.  Pellentesque tristique imperdiet tortor.  Nam euismod tellus id erat.
+
+To change the case of a word:
+
+M-u (uppercase)
+M-l (lowercase)
+M-c (sentence case) -- capitalize each word
+
+Change case of PREVIOUS word/s
+
+As above, except that one uses the M-- prefix
+
+Use a numeric argument to change the case of X number of words:
+
+e.g. M-- 2 M-u
+
+To change the case of a region of text:
+
+C-x C-u -- Change the region to uppercase
+C-x C-l -- Change the region to lowercase
+
+C-x C-t -- Change the region to sentence case (capitalize-region) -- originally bound to transpose lines
+
+(global-set-key (kbd "C-x C-t") 'capitalize-region)
+

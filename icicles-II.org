@@ -1,0 +1,37 @@
+#+title: icicles II -- 5 killer icicles features
+#+Roam_Tags: icicles tweaks features tips features killer
+#+created: [2021-02-19 Fri]
+#+last_modified: [2021-02-19 Fri 18:26]
+
+- Not just tab - but a combination of narrowing + completion
+  some new users just hit `TAB` and started cycling in drone-like fashion
+  ibuffer
+
+- Filtering (C-~) Tilde 
+  other completion systems might have something similar to progressive completion but I don't think they provide something like `C-~' (I could be wrong)
+  org-roam, manual deleting using up/down arrow keys and delete
+  save honed lists
+  C-right angle bracket
+  To clear: C-]
+
+- orderless - banking
+  ediff-version or version-ediff
+  
+- Sorting C-, M-, 
+  org-roam-find-file
+  sermons
+
+- C-M-j
+  C-x C-f ~/diary
+  icicle-find-file
+  Ernie
+  Maud
+  Mom
+  C-S exclamation
+  C-!
+
+https://youtu.be/UO4IgO1X6PU
+
+[[file:icicles-I.org][icicles I -- Installation and main idea]]  
+[[file:icicles-III.org][Icicles-III - Advanced tips, tweaks and features]]
+[[file:icicles-IV.org][Icicles-IV - More advanced features and tips]]

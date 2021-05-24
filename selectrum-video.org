@@ -1,0 +1,69 @@
+#+title: Selectrum -- Key features and tweaks
+#+ROAM_TAGS: selectrum
+#+created: [2021-03-21 Sun]
+#+last_modified: [2021-03-21 Sun 17:06]
+#+STARTUP: showall 
+
+*What can Selectrum do?*
+
+Is much more that just vertical-completion as we shall see. But first:
+
+*Note*
+
+That one no longer has to use Selectrum with Prescient. This is because history-based sorting has now been added to Selectrum!
+
+What is the difference? Sorting by history in Selectrum is basic. Recent candidates from the history appear before other candidates. Prescient uses a more sophisticated frecency-based computation (combines frequency and recency -- to be distinguished)
+
+** One must emphasise that Selectrum makes use of the regular minibuffer commands in Emacs and enhances these -- minimalist approach
+
+** Navigational improvements
+
+*** Vanilla Emacs Keys
+
+C-i/TAB complete, insert and proceed
+RET/C-m select current candidate and submit (i.e. execute)
+
+e.g. emacs
+
+*** Enhancements - Quick Keys
+
+M-i toggles and *inserts* a candidate with quick keys (which is most useful in file completions) 
+
+M-m *submits* a candidate using quick keys. 
+
+** Selectrum also offers prompts with partial input for quickly finding some long or difficult path
+
+e.g.
+
+Tedious always typing .emacs.d/packages/
+
+~/.e/p/
+
+** One can toggle between vertical/horizontal display styles
+
+M-q
+Use up/down arrows
+
+** History browsing
+
+org-roam-find-file
+using M-r
+Also, M-p M-n previous/next-history-element 
+
+** Variables to customise
+
+By default completion candidates appear in the minibuffer display.
+
+One can display candidates outside the minibuffer rather than in the minibuffer!
+
+Customise selectrum-display-action
+
+** Conclusion
+
+Program has grown and matured and keeps getting better
+Makes one's life easy -- and you feel like you are in Emacs, not some other program
+
+[[file:consult-orderless-selectrum-etc/embark-video.org][Embark Video -- Key features and some tweaks]]
+[[file:2021-03-22-orderless_key_features_and_some_tweaks.org][Orderless -- Key features and some tweaks]]
+[[file:consult-video.org][Consult -- Key features and some tweaks]]
+https://youtu.be/Af6ymyKyN4o

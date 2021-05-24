@@ -1,0 +1,23 @@
+#+title: automatic saving of modes, scratch buffer, and registers
+#+ROAM_TAGS: real-auto-save scratch session emacs-elements 
+#+created: [2021-04-16 Fri]
+#+last_modified: [2021-04-16 Fri 04:54]
+
+*Three automatic saving packages*
+#  ================================
+;; REAL-AUTO-SAVE
+ (require 'real-auto-save)
+ (add-hook 'diary-mode-hook 'real-auto-save-mode)
+	;; (add-hook 'text-mode-hook 'real-auto-save-mode)
+	;; (add-hook 'prog-mode-hook 'real-auto-save-mode)
+#  ================================
+;;; PERSISTENT-SCRATCH
+(persistent-scratch-setup-default)
+(setq initial-scratch-message "")
+#  ================================
+;;; SESSION
+(require 'session)
+(add-hook 'after-init-hook 'session-initialize)
+(setq session-use-package t nil (session))
+#  ================================
+

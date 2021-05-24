@@ -1,0 +1,48 @@
+#+title: Set up Gnus in Emacs for GMAIL in a few minutes
+#+ROAM_TAGS: gnus gmail
+#+created: [2021-03-08 Mon]
+#+last_modified: [2021-03-08 Mon 16:45]
+
+* Enable IMAP in Gmail
+
+* Choose which LABELS will appear in Gnus
+
+* Set up an App Password
+
+Go to your Google Account: https://myaccount.google.com/
+Select *Security*
+Under "Signing in to Google," select App Passwords
+
+* Tell Gnus which server to use
+
+Emacs =M-x customize=
+
+=gnus-select-method=
+nnimap
+Address: imap.gmail.com
+
+* To send mail
+
+=message-send-mail-function=
+=smtpmail-send-it=
+
+=gnus-message-archive-group=
+Enter this string:
+"Gmail]/Sent Mail" (with the quotes)
+
+* One or two essential variables:
+
+=gnus-interactive-exit= nil
+=gnus-novice-user= nil
+=gnus-expert-user= t
+
+(bind-key "<delete>" 'gnus-summary-delete-article gnus-summary-mode-map)
+
+* Set up newsgroups
+
+=gnus-secondary-select-methods=
+
+nntp "news.gmane.io" (without the quotes)
+
+To enter the server buffer, use the ^
+=gnus-group-enter-server-mode= command in the group buffer.

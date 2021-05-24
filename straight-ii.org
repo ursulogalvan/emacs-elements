@@ -1,0 +1,61 @@
+#+title: Straight Package Manager: Video II
+#+ROAM_TAGS: straight package manager
+#+created: [2021-03-09 Tue]
+#+last_modified: [2021-03-09 Tue 02:39]
+
+*But I want to uninstall my packages*
+If you really want to uninstall a package, simply delete its local repository from ~/.emacs.d/straight/repos. To automate the process of deleting packages that aren't mentioned by your init-file, you can load the straight-x library and try out the user-contributed function straight-x-clean-unused-repos.
+
+*With the org-package*
+Make sure that you invoke (straight-use-package 'org) or (straight-use-package 'org-plus-contrib) before running any code that could load org.
+
+*You can update manually rather than automatically*
+If you prefer to eschew automatic package rebuilding entirely, you can just =set straight-check-for-modifications= to nil.
+
+To manually update:
+
+=M-x straight-rebuild-package= or =M-x straight-rebuild-all=.
+
+*Byte compilation*
+By specifying :build (:not compile) in a package's recipe, you may inhibit byte-compilation.
+You can also customise the variable straight-disable-compile to effect this change on all recipes which do not explicitly disable byte-compilation via the :build keyword.
+
+*Symbolic links*
+Usually, straight.el uses symbolic links ("symlinks") to make package files available from the build directory. This happens when =straight-use-symlinks= is non-nil, the default. On Microsoft Windows, however, support for symlinks is not always available, so the default value of straight-use-symlinks is nil on that platform.
+
+To enable symlinks in Windows:
+
+https://www.reddit.com/r/emacs/comments/e7c01b/alternatives_to_symlinks_in_emacs/
+
+Then here:
+
+https://superuser.com/questions/104845/permission-to-make-symbolic-links-in-windows-7
+
+[[file:20210101064835-create.org][Create symlinks in Windows Command Prompt]]
+
+*Using straight.el to identify bugs*
+
+M-x load-file RET ~/.emacs.d/straight/repos/straight.el/bootstrap.el RET
+You can also do this from the command line, perhaps by creating an alias for it:
+
+$ emacs -Q -l ~/.emacs.d/straight/repos/straight.el/bootstrap.el
+
+Let's say you are making a bug report for Projectile. To load just Projectile and all of its dependencies, run:
+
+M-x straight-use-package RET projectile RET
+
+Note that this will use the currently checked-out revisions of Projectile and all of its dependencies, so you should take note of those in order to make your bug report.
+
+... in straight.el itself
+straight.el provides a macro, straight-bug-report, to test straight.el in a clean environment.
+
+*How can I use the built-in version of a package?*
+To tell straight.el that you want to use the version of Org shipped with Emacs, rather than cloning the upstream repository:
+
+(straight-use-package '(org :type built-in))
+
+Note that :type is a keyword for straight.el, not for use-package. If you are using use-package, then use:
+
+(use-package org :straight (:type built-in))
+
+*Summary*

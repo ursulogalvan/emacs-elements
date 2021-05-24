@@ -1,0 +1,120 @@
+#+Title: Icicles-III - Advanced tips, tweaks and features
+#+Roam_Tags: icicles tweaks features tips
+#+Created: [2021-02-19 Fri]
+#+Last_Modified: [2021-02-19 Fri 18:26]
+#+STARTUP: showall
+
+* FILTERING AND WIDENING
+
+AND
+
+- M-* filters with a match pattern, narrowing.  It freezes the current set of candidates from completion, and enters a recursive minibuffer, so you can type another pattern.
+
+#+begin_example
+M-x
+version
+M-*
+emacs
+#+end_example
+
+OR
+
+- In the same manner, M-+ widens.
+
+#+begin_example
+M-x
+version
+tab
+M-*
+emacs
+M-+
+org
+RET
+#+end_example
+
+Note: M-* and M-+ are mnemonic: Boolean * is AND, Boolean + is OR.
+
+Previous video I used the phrase "bank it"
+
+S-SPC
+
+M-*
+tab
+
+This command is equivalent to M-* followed by S-<tab> or <tab>
+
+Why? Sometimes you don't need or want to take the time to display all of your matches in the completions buffer. In which case use M-* or M-+
+
+S-BACKSPACE does the same
+It combines S-+ and tab
+
+* CLEARING KEYS
+
+How to clear away information in the minibuffer
+
+- M-k -- removes everything that's in the minibuffer
+
+#+begin_example
+M-x
+Page-Down
+M-k
+#+end_example
+
+- C-] or C-g exits the current minibuffer level by cancelling (aborting).
+- C-M-T -- cancels all levels in the minibuffer
+
+Note: C-g may cancel an action without aborting
+
+- M-Del and C-backspace -- kill a word
+
+* USING PAGE UP/ PAGE DOWN/ HOME/ END/ PREVIOUS/ NEXT
+
+Initially confused me a lot
+
+*Arrow and Page Down keys*
+
+- Up/down keys are for navigation only
+
+- Page Up and Page Down are for *apropos* cycling
+
+- Home and End are for *prefix* cycling
+
+*These keys can be used in the completion buffer but can also be used to bypass the completion buffer*
+
+One can go do directly to page-down
+
+#+begin_example
+f8
+icicle
+Page-down
+#+end_example
+
+#+begin_example
+M-x
+tool
+page-down
+page-up
+<RET> (to run the command you want)
+#+end_example
+
+*toggle apropos and prefix completion*
+
+Use Home/End instead of PageUp/Page-Down
+
+This is best illustrated in the completions buffer
+
+Remember one can and must use regexp to narrow field of inputs:
+
+M-x  ise.+char
+next
+
+Note: mode line shows description of currently selected candidate
+
+Hit C-M-RET to see help on a candidate
+Then hit RET to act on it
+
+Note: When the control key is added to navigational keys it adds an action
+
+[[file:../icicles-I.org][icicles I -- Installation and main idea]]
+[[file:../icicles-II.org][icicles II -- 5 killer icicles features]]
+[[file:icicles-IV.org][Icicles-IV - More advanced features and tips]]

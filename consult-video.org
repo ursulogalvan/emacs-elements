@@ -1,0 +1,114 @@
+#+title: Consult -- Key features and some tweaks
+#+ROAM_TAGS: consult
+#+created: [2021-03-21 Sun]
+#+last_modified: [2021-03-21 Sun 17:06]
+#+STARTUP: showall
+
+*Note*
+I am using the default Consult Use-package example
+
+https://github.com/minad/consult#use-package-example
+
+*Important search/navigation commands*
+
+* consult-buffer
+
+C-x b
+
+- Previews
+- Works with selectrum quick-keys
+- narrow list of choices with a prefix key: f,b,m
+
+Supported narrowing keys:
+
+b Buffers
+f Files (Requires recentf-mode)
+m Bookmarks
+p Project (only available if consult-project-root-function is configured as shown in the example configuration).
+
+- if you press DEL (Backspace) afterwards, the full candidate list will be shown again.
+- You can show virtual buffers. It is enabled by default if you have recentf-mode enabled.
+- It is possible to configure the list of sources via:
+
+~consult-buffer-sources~
+
+- To disable preview:
+
+~consult-preview-key~ ~nil~
+
+* consult-isearch
+
+M-s e
+
+Narrow to literal or regex expressions
+
+* consult-line
+
+Equivalent to Swiper command
+
+M-s l
+
+Select from matching lines. Supports live preview and recursive editing of the preview. 
+
+One can search for the symbol at point (M-s l M-n M-n).
+
+=symbol-at-point=
+
+One can switch from isearch to consult-line
+
+* consult-outline
+
+M-g o
+
+Jump to the heading of the outline.
+Very helpful with org-files
+Supports live preview and recursive editing
+
+* consult-imenu (narrowing)
+
+M-g i
+
+presents a flat list of the Imenu with live preview and narrowing support
+
+e.g. to quickly access functions in you init.el
+
+* consult-grep/ripgrep
+
+M-s g
+
+If consult-grep is invoked with prefix argument C-u M-s g, you can specify the directory manually. Otherwise the default-directory is searched.
+
+If you use Embark you can export the matches found by consult-grep, consult-ripgrep and consult-git-grep to a Grep buffer, where the matches across files can be edited, if the wgrep package is installed.
+
+* consult-yank-pop
+
+M-y
+
+Browse the kill ring
+
+*There are more "hidden gems"*
+
+* Commands that boost one's use of the Emacs registry
+
+M-' consult-register-store
+M-# consult-register-load
+
+#+begin_example
+M-' a -> Store point in a
+
+      POINT
+
+M-' a -> Store region in a if a region is marked
+
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  Donec hendrerit tempor tellus.  Donec pretium posuere tellus.  Proin quam nisl, tincidunt et, mattis eget, convallis nec, purus.  Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.  Nulla posuere.  Donec vitae dolor.  Nullam tristique diam non turpis.  Cras placerat accumsan nulla.  Nullam rutrum.  Nam vestibulum accumsan nisl.
+
+M-' M-w a -> Store window configuration in a
+#+end_example
+
+* Conclusion
+
+- A few more consult features will be discussed also in my next video on Embark
+- Robust
+- Modern
+- Works very well with Selectrum
+- Makes it easier to do one's work

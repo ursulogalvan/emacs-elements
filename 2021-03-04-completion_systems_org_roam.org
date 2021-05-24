@@ -1,0 +1,56 @@
+#+title: completion-systems-org-roam
+#+ROAM_TAGS: org-roam completion
+#+created: [2021-03-04 Thu]
+#+last_modified: [2021-03-04 Thu 10:20]
+~(setq org-roam-completion-system 'default)~
+
+Plug-and-play
+
+Systems that use "default" are: Vanilla Emacs, icicles, icomplete, selectrum
+Systems whose name must be specified: ivy, ido, helm
+
+- *Vanilla Emacs*
+=completion-styles=
+=completion-cycle-threshold=
+
+- *icomplete*
+  #+begin_example
+  (require 'icomplete)
+  (icomplete-mode 1)
+  (icomplete-vertical-mode)
+  #+end_example
+  Prot
+
+- *Ido and Ido-Vertical*
+  Gone out of favour in recent times
+  Solid
+  Many excellent features
+
+- *Helm*
+    
+- *Selectrum/Consult*
+  Can be used with Prescient
+  Works with the default completion API
+  Offers vertical completion
+  Does not work across all completion frameworks
+  
+- *Ivy/Counsel*
+  Solid
+  Easy to use
+  Excellent code
+
+- *Icicles*
+
+  =f8=
+  =tab= or =up-down= /completion/
+  =f8=
+  =page-up page-down= /to bypass completions buffer/
+  =f8=
+  =C-Pause=
+  =M-pause= /the candidate has previously been entered (using RET) as a candidate choice in the minibuffer/
+  =f8=
+  =M-p M-n= /are the same in vanilla Emacs: they cycle through past inputs.
+  =M-r= and =M-s= Icicles uses these, but they are also in vanilla Emacs.
+  =M-k= /delete an item from history list/
+
+  

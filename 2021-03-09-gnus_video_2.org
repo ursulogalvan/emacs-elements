@@ -1,0 +1,162 @@
+#+title: gnus-video-2
+#+ROAM_TAGS: gnus video
+#+created: [2021-03-09 Tue]
+#+last_modified: [2021-03-09 Tue 16:21]
+
+* If you are satisfied that you really never want to see any new groups,
+you can set ‘gnus-check-new-newsgroups’ to ‘nil’. 
+
+* Attach files from dired to a Gnus Email
+
+#+begin_src
+(add-hook 'dired-mode-hook 'turn-on-gnus-dired-mode)
+#+end_src
+=C-c C-m C-a=
+
+* Show all mails in Gnus
+
+S-c
+[ ] Permanently visible
+    Always display this group, even when there are no unread articles in it.
+
+* Resend message as new email
+
+ SD e
+ 
+* Forward a message
+
+=C-c C-f=
+
+* Save attachments
+
+=K o=
+Choose a directory
+=RET=
+
+* Replying
+
+R - reply with message below
+r - reply without message
+SW - system wide reply with message (all Cc recipients of original ,message included in reply)
+Sw - system wide reply with no message
+
+To customise the position of the cursor in replies =message-cite-reply-position=
+
+** Search for mails (works only in IMAP)
+
+GG (=M-x gnus-group-make-nnir-group=) to search mails at server side in “Group Buffer”.
+You can press # to mark the groups. The search will be limited to the marked groups.
+Press M-# to unmark.
+If no group marked, the group under cursor is searched.
+To search only *certain fields* in the mail, press C-u GG or C-u =M-x gnus-group-make-nnir-group= (VERY USEFUL)
+
+https://github.com/redguardtoo/mastering-emacs-in-one-year-guide/blob/master/gnus-guide-en.org
+
+#+begin_src
+;; Let Gnus use Gmail search syntax
+(add-to-list 'nnir-imap-search-arguments '("gmail" . "X-GM-RAW"))
+;; `gnus-group-make-nnir-group' use Gmail search syntax *by default*.
+;; You can press `G G` instead `C-u G G` instead.
+(setq nnir-imap-default-search-key "gmail")
+#+end_src
+
+* Setting Marks
+
+! -- Tick the current article (gnus-summary-tick-article-forward)
+M-u -- Clear marks from the current article
+? -- Mark the current article as dormant (gnus-summary-mark-as-dormant)
+d / M-r -- Mark the current article as read without reading it (gnus-summary-mark-as-read-forward)
+C -- Mark all unread articles as read (gnus-summary-catchup).
+u -- subscribe to a newsgroup
+M C-c -- Mark all articles in the group as read—even the ticked and dormant articles (gnus-summary-catchup-all).
+E -- Mark the current article as expirable (gnus-summary-mark-as-expirable)
+Mb -- Set a bookmark in the current article (gnus-summary-set-bookmark).
+MB -- Remove the bookmark from the current article (gnus-summary-remove-bookmark).
+
+* Add fields to email message
+CC -- C-c C-f C-c
+BCC -- C-c C-f C-b
+
+* Send mail later in Gnus delay postpone
+ https://emacs.stackexchange.com/questions/20675/send-mail-later-in-gnus
+ 
+C-c C-j
+
+* Reset group parameters
+
+delete the .newsrc.eld file -- all customizations are lost
+
+* Drafts
+
+https://www.emacswiki.org/emacs/GnusGmail
+
+- save the mail via C-x C-s and then exit it with C-c C-k.
+- When you look in your nndraft:drafts folder, you’ll see it there.
+- To edit, hit e on the mail.
+
+* Save draft
+
+C-c C-d
+  
+* Attach file to a message
+
+C-c C-a (mml-attach-file)
+
+* Customize a group
+
+G c
+
+* Customise the number of messages displayed after invoking C-u RET
+
+gnus-large-newsgroup
+
+* Restart Gnus
+
+R
+
+* Write an email
+
+m
+
+C-x m (from anywhere in Emacs)
+
+* Show all messages in folder not just unread ones
+
+C-u SPC
+C-u RET
+
+* Mark a message
+
+#
+
+* Mark a message as as killed
+
+k (and then go on to the next message)
+
+C-k (just kill)
+
+* Delete a message forever
+
+# B <DEL>
+
+* Move or Label a message
+
+B m
+
+* Expire
+
+E - mark message as expirable
+
+"If you do not mark an article as expirable, it will remain on your system until hell freezes over."
+
+This bears repeating one more time, with some spurious capitalizations: IF you do NOT mark articles as EXPIRABLE, Gnus will NEVER delete those ARTICLES.
+
+https://www.gnu.org/software/emacs/manual/html_node/gnus/Expiring-Mail.html
+
+* Show all folders
+
+Shift-l
+
+* Show Groups
+
+Shift-^

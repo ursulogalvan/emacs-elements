@@ -1,0 +1,107 @@
+#+title: image-dired
+#+ROAM_TAGS: images image dired
+#+created: [2021-04-18 Sun]
+#+last_modified: [2021-04-18 Sun 03:43]
+#+STARTUP: showall
+#+OPTIONS: \\n:t"
+
+Emacs Manual p. 351-352
+
+Image-Dired is a facility for browsing image files.
+
+* imagemagick
+
+It depends on a FULL install of imagemagick
+
+./configure --with-imagemagick
+
+https://imagemagick.org/download/binaries/ImageMagick-7.0.8-23-Q16-x64-dll.exe
+
+If you use MSYS2 just open the mingw-console and type in:
+
+pacman -Syu
+pacman -S base-devel
+pacman -S mingw-w64-x86_64-toolchain
+pacman -S mingw-w64-x86_64-zlib
+pacman -S mingw-w64-x86_64-libpng
+pacman -S mingw-w64-x86_64-imagemagick
+
+https://superuser.com/questions/1105815/how-do-i-install-imagemagick-for-mingw-on-windows-7
+
+Add directory to exec-path
+
+* View images either as thumbnails or in full size, either inside Emacs or through an external viewer.
+
+Go to folder
+Mark files
+Invoke =C-t d= (image-dired-display-thumbs)
+Creates a buffer with thumbnails of marked files
+
+A simpler way is to invoke *image-dired*
+
+If the number of image files exceeds the variable <image-dired-show-all-from-dir-max-files>. This sets the maximum number of files to show before warning the user. The default is 50.
+
+=(global-set-key (kbd "M-s i") 'image-dired)=
+=(setq image-dired-dir "~/Pictures/image-dired/")=
+
+Point shifts to the image buffer, to the 1st image.
+
+* Navigation of Thumbnails
+
+=RET= displays a sized version of the thumbnail in the other window
+
+=Up/down/left/right= to move around without displaying a sized version =SPC= and =DEL= to navigate sized images
+
+To view the image in its original size:
+
+=C-u RET=
+OR
+=C-RET= to display the image in an external viewer
+
+Set your external viewer this way:
+
+=C-u 0 w= *great tip*
+
+To display the image in an external viewer. You must first configure
+
+<image-dired-external-viewer>
+
+https://filehippo.com/download_picasa/post_download/
+
+=d= marks files for deletion
+
+=C-d= deletes the thumbnail from the thumbnail buffer
+
+* Add tags -- metadata used to categorise image files
+
+The tags are stored in a plain text file configured by <image-dired-db-file>.
+
+One can mark files in Dired or from thumbnail buffer
+
+=m= marks
+=u= unmarks
+
+=tt= - to tag directly
+=tr=
+
+=C-t t= - tag
+=C-t r= - remove tag
+=C-t f= - mark files with a tag
+=C-t d= - views marked files
+
+One can also comment on a image:
+
+=c= -- in thumbnail buffer
+=C-t c= -- from Dired
+
+* Edit images
+
+Image-Dired provides simple image manipulation. In the thumbnail buffer, type =L= to rotate the original image 90 degrees anti clockwise, and =R= to rotate it 90 degrees clockwise. This rotation is lossless, and uses an external utility called jpegtran, which you need to install first.
+
+eimp-mode -- basic editing of images
+
+https://www.youtube.com/watch?v=wABkEQsPKeY&ab_channel=XahLee
+
+https://github.com/xahlee/xah-dired
+
+https://youtu.be/NrY3t3W0_cM
